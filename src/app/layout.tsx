@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   description: 'A Next.js app with Spotify integration',
 };
 
-export default function RootLayout({
+export default function RootLaoyut({
   children,
 }: {
   children: React.ReactNode;

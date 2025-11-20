@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { SpotifyApi } from '@/lib/spotify';
 import { SpotifyArtist } from '@/types/spotify';
+import { useSpotifyData } from '@/contexts/SpotifyDataContext';
 import Image from 'next/image';
 
 interface ArtistTabProps {
@@ -10,8 +11,7 @@ interface ArtistTabProps {
 }
 
 export function ArtistTab({ spotifyApi }: ArtistTabProps) {
-  const [topArtists, setTopArtists] = useState<SpotifyArtist[]>([]);
-  const [followedArtists, setFollowedArtists] = useState<SpotifyArtist[]>([]);
+  const { topArtists, followedArtists, setTopArtists, setFollowedArtists } = useSpotifyData();
   const [loading, setLoading] = useState(true);
   const [activeView, setActiveView] = useState<'top' | 'followed'>('top');
 

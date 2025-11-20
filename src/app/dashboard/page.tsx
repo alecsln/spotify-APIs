@@ -8,6 +8,7 @@ import { ArtistTab } from '@/components/tabs/ArtistTab';
 import { PlaylistTab } from '@/components/tabs/PlaylistTab';
 import { GenresTab } from '@/components/tabs/GenresTab';
 import { ProfileTab } from '@/components/tabs/ProfileTab';
+import { SpotifyDataProvider } from '@/contexts/SpotifyDataContext';
 
 type TabType = 'artists' | 'playlists' | 'genres' | 'profile';
 
@@ -86,10 +87,12 @@ export default function DashboardPage() {
 
       {/* Content */}
       <main className="p-6">
-        {activeTab === 'artists' && <ArtistTab spotifyApi={spotifyApi} />}
-        {activeTab === 'playlists' && <PlaylistTab spotifyApi={spotifyApi} />}
-        {activeTab === 'genres' && <GenresTab spotifyApi={spotifyApi} />}
-        {activeTab === 'profile' && <ProfileTab spotifyApi={spotifyApi} />}
+        <SpotifyDataProvider>
+          {activeTab === 'artists' && <ArtistTab spotifyApi={spotifyApi} />}
+          {activeTab === 'playlists' && <PlaylistTab spotifyApi={spotifyApi} />}
+          {activeTab === 'genres' && <GenresTab spotifyApi={spotifyApi} />}
+          {activeTab === 'profile' && <ProfileTab spotifyApi={spotifyApi} />}
+        </SpotifyDataProvider>
       </main>
     </div>
   );
