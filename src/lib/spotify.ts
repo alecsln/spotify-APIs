@@ -1,4 +1,4 @@
-import { SpotifyUser, SpotifyArtist, SpotifyPlaylist, SpotifyApiResponse, SpotifyGenre } from '@/types/spotify';
+import { SpotifyUser, SpotifyArtist, SpotifyPlaylist, SpotifyApiResponse, SpotifyGenre, SpotifyRecommendationsResponse } from '@/types/spotify';
 
 const SPOTIFY_API_BASE = 'https://api.spotify.com/v1';
 
@@ -39,8 +39,8 @@ export class SpotifyApi {
     return this.request<{ genres: string[] }>('/recommendations/available-genre-seeds');
   }
 
-  async getRecommendationsByGenre(genre: string, limit = 20) {
-    return this.request(`/recommendations?seed_genres=${genre}&limit=${limit}`);
+  async getRecommendationsByGenre(genre: string, limit = 20): Promise<SpotifyRecommendationsResponse> {
+    return this.request<SpotifyRecommendationsResponse>(`/recommendations?seed_genres=${genre}&limit=${limit}`);
   }
 
   async getFollowedArtists(limit = 20): Promise<{ artists: SpotifyApiResponse<SpotifyArtist> }> {

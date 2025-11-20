@@ -19,7 +19,7 @@ export function ProfileTab({ spotifyApi }: ProfileTabProps) {
     const fetchUserData = async () => {
       try {
         setLoading(true);
-        const [userResponse, artistsResponse, tracksResponse] = await Promise.all([
+        const [userResponse, artistsResponse] = await Promise.all([
           spotifyApi.getCurrentUser(),
           spotifyApi.getTopArtists(5),
           // Note: We'll need to add this method to SpotifyApi

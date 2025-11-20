@@ -74,3 +74,15 @@ export interface SpotifyApiResponse<T> {
   next: string | null;
   previous: string | null;
 }
+
+export interface SpotifyRecommendationsResponse {
+  tracks: SpotifyTrack[];
+  seeds: Array<{
+    afterFilteringSize: number;
+    afterRelinkingSize: number;
+    href: string;
+    id: string;
+    initialPoolSize: number;
+    type: string;
+  }>;
+}
